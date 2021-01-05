@@ -1,0 +1,32 @@
+<div class="conteudo">
+    <div class="div-cabeca">
+        <div class="label-org"> Usuário: (<%= @usuario.nome %>) </div>
+            <%= link_to 'Excluir', usuario_path(@usuario.id), data: { confirm: 'Deseja excluir este usuário permanentemente?' }, method: :delete, class:'btn btn-danger' %>
+            <%= link_to 'Editar', edit_usuario_path(@usuario.id, { show: "show"}), class:'btn btn-light' %>
+            <%= link_to 'Novo registro', new_usuario_path({ show: "novo", usuario: @usuario}), class:'btn btn-success' %>
+    </div>
+    <table class="tabela-lado-lado mt-12px">
+        <tbody>
+            <tr>
+                <td class="td-index-esquerda"> Nome: </td>
+                <td class="td-index-direita"> <%= @usuario.nome %> </td>
+            </tr>
+            <tr>
+                <td class="td-index-esquerda"> Login: </td>
+                <td class="td-index-direita"> <%= @usuario.login %> </td>
+            </tr>
+            <tr>
+                <td class="td-index-esquerda"> Email: </td>
+                <td class="td-index-direita"> <%= @usuario.email %> </td>
+            </tr>
+            <tr>
+                <td class="td-index-esquerda"> Data de nascimento: </td>
+                <td class="td-index-direita"> <%= @usuario.data_de_nascimento.strftime("%m/%d/%Y") %> </td>
+            </tr>
+            <tr>
+                <td class="td-index-esquerda"> Telefone: </td>
+                <td class="td-index-direita"> <%= @usuario.telefone %> </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

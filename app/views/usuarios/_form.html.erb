@@ -1,0 +1,98 @@
+<%= form_for @usuario, validate:true do |u| %>
+
+    <% if @usuario.errors.any? %>
+        <div class="fundo_erro">
+            <h2 class="text-center">Revise as informações abaixo: </h2>
+            <p> </p>
+            <ul>
+            <% @usuario.errors.full_messages.each do |msg| %>
+            <li><%= msg.humanize %></li>
+            <% end %>
+            </ul>
+        </div>
+    <% end %>
+    
+    <table style="width: 100%;">
+        <tbody style="width: 100%;">
+            <tr>
+                <td class="text-right alinhamento-label-form">
+                    <%= u.label :login, class: 'text-right', style: 'width: 170px' %>
+                </td>
+                <td class="pb-6px">
+                    <%= u.text_field :login, class: 'form-control focus-padrao', style: 'width: 100%' %>
+                </td>
+            </tr>
+            <tr>
+                <td class="text-right alinhamento-label-form">
+                    <%= u.label :nome, class: 'text-right', style: 'width: 170px' %>
+                </td>
+                <td class="pb-6px">
+                    <%= u.text_field :nome, class: 'form-control focus-padrao', style: 'width: 100%' %>
+                </td>
+            </tr>
+            <tr>
+                <td class="text-right alinhamento-label-form">
+                    <%= u.label :telefone, class: 'text-right', style: 'width: 170px' %>
+                </td>
+                <td class="pb-6px">
+                    <%= u.text_field :telefone, class: 'form-control focus-padrao phone_with_ddd', style: 'width: 100%' %>
+                </td>
+            </tr>
+            <tr>
+                <td class="text-right alinhamento-label-form">
+                    <%= u.label :email, class: 'text-right', style: 'width: 170px' %>
+                </td>
+                <td class="pb-6px">
+                    <%= u.text_field :email, class: 'form-control focus-padrao', style: 'width: 100%' %>
+                </td>
+            </tr>
+            <tr>
+                <td class="text-right alinhamento-label-form">
+                    <%= u.label :senha, class: 'text-right', style: 'width: 170px' %>
+                </td>
+                <td class="pb-6px">
+                    <%= u.password_field :senha, class: 'form-control focus-padrao', style: 'width: 100%' %>
+                </td>
+            </tr>
+            <tr>
+                <td class="text-right alinhamento-label-form">
+                    <%= u.label 'Confirmação de senha', class: 'text-right', style: 'width: 170px' %>
+                </td>
+                <td class="pb-6px">
+                    <%= u.password_field :senha_confirmation, class: 'form-control focus-padrao', style: 'width: 100%' %>
+                </td>
+            </tr>
+            <tr>
+                <td class="text-right alinhamento-label-form">
+                    <%= u.label :data_de_nascimento, class: 'text-right', style: 'width: 170px' %>
+                </td>
+                <td class="pb-6px">
+                    <%= u.date_field :data_de_nascimento, class: 'form-control focus-padrao', style: 'width: 100%;' %>
+                </td>
+            </tr>
+                <tr>
+                    <td class="text-right alinhamento-label-form">
+                        <%= u.label :admin, class: 'text-right', style: 'width: 170px' %>
+                    </td>
+                    <td class="pb-6px pt-9px">
+                        <%= u.check_box :admin, class: 'focus-check' %>
+                    </td>
+                </tr>
+            <tr>
+                <td class="text-right alinhamento-label-form">
+                    <%= u.label :gerente, class: 'text-right', style: 'width: 170px' %>
+                </td>
+                <td class="pb-6px pt-9px">
+                    <%= u.check_box :gerente, class: 'focus-check' %>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <hr class="hr-system-100por">
+
+    <div class='width-100por text-center'>
+        <%= u.submit 'Confirmar', class: 'text-center btn btn-success' %>
+    </div>
+
+<% end %>

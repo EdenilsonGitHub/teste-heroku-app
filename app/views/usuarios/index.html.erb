@@ -1,0 +1,46 @@
+<div class="conteudo  min-height-index-padrao-600px">
+    <div class="div-cabeca-index" style="text-align: center">
+        <div class="label-org-index pl-35px"> Usuários </div>
+        <div class="botoes-org-index">
+            <%= link_to 'Novo registro', new_usuario_path, class:'btn btn-success' %>
+        </div>
+    </div>
+    <table class="table_index" style="<%= 'margin-top: 13px!important' unless @usuarios.blank? %>">
+        <% if @usuarios.blank? %>
+            <tr>
+                <td colspan="2" class="nao_ha_registros">
+                    Não há registros
+                </td>
+            </tr>
+        <% else %>
+            <thead>
+                <tr>
+                    <th class="tr_table_index text-center">ID</th>
+                    <th class="tr_table_index text-center">Nome</th>
+                    <th class="tr_table_index text-center">login</th>
+                    <th class="tr_table_index text-center">Email</th>
+                    <th class="tr_table_index text-center">Data de nascimento</th>
+                    <th class="tr_table_index text-center">Telefone</th>
+                    <th class="tr_table_index text-center">Admin</th>
+                    <th class="tr_table_index text-center">Gerente</th>
+                    <th class="tr_table_index text-center">Editar</th>
+                    <th class="tr_table_index text-center">Excluir</th>
+                </tr>
+            </thead>
+            <tbody>                
+                <% @usuarios.each do |usuario| %>
+                    <tr class="<%= cycle("odd", "even") -%>">
+                        <td class="text-center width-60px"> <%= usuario.id %> </td>
+                        <td class="width-150px"> <%= link_to usuario.nome, usuario_path(usuario), class: 'link-azul' %> </td>
+                        <td class="width-150px"> <%= usuario.login %> </td>
+                        <td class="width-150px"> <%= usuario.email %> </td>
+                        <td class="width-150px"> <%= usuario.data_de_nascimento.strftime("%m/%d/%Y") %> </td>
+                        <td class="width-150px"> <%= usuario.telefone %> </td>
+                        <td class="text-center width-60px"><%= link_to('pencil', edit_usuario_path(usuario), class:'pencil') %></td>
+                        <td class="text-center width-60px"><%= link_to('trash', usuario_path(usuario), method: :delete, data: { confirm: 'Deseja excluir este usuário permanentemente?' }, class: 'trash' ) %></td>
+                    </tr>
+                <% end %>
+            </tbody>
+        <% end %>
+    </table>
+</div>
