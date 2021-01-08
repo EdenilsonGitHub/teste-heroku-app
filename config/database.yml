@@ -22,6 +22,10 @@ default: &default
   # For details on connection pooling, see Rails configuration guide
   # https://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  url: <%= ENV["DATABASE_URL"] %>
+  host: ec2-18-213-176-229.compute-1.amazonaws.com
+  port: 5432
+  uri: postgres://nnxctyohtjohhn:35d85ab52cffd00e0ea94503f24dc8d09f2000122cd745ff56b282d13e1aa624@ec2-18-213-176-229.compute-1.amazonaws.com:5432/d1g2hrgb3mrvnj
 
 development:
   <<: *default
